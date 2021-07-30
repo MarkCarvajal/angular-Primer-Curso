@@ -1,0 +1,23 @@
+<p>Listado de Heroes</p>
+
+<!-- el else apunta al # del ng-template como referencia interna -->
+<div *ngIf="heroeBorrado; else noBorrado ">
+    <h3>Héroe borrado: <small>{{heroeBorrado}}</small></h3>
+</div>
+
+<!-- template de codigo que es llamado a travez del #, se usa habitualmente
+     cuando otra etiqueta tiene alguna condicion como el ngIf y hace referencia a él-->
+<ng-template #noBorrado>
+    <h3>No ha borrado nada</h3>
+</ng-template>
+   
+
+<button (click)="borrarHeroe()">
+    Borrar
+</button>
+
+<ul>
+    <li *ngFor="let heroe of heroes; let i = index">
+        {{i + 1}} - {{ heroe }}
+    </li>
+</ul>
